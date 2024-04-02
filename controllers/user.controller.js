@@ -18,14 +18,14 @@ const userRegister = async (req, res) => {
   console.log("req.files", req.files);
 
   const avatarlocalpath = req.files?.avatar[0]?.path;
-  const coverimagelocalpath = req.files?.coverimage[0]?.path;
+  const coverimagelocalpath = req.files?.coverImage[0]?.path;
 
   if (!avatarlocalpath) throw new ApiError(400, "avatar is require");
 
   const avatarResponse = await uploadOnCloudinary(avatarlocalpath);
   const coverImageResponse = await uploadOnCloudinary(coverimagelocalpath);
 
-  if (!avatarResponse) throw new ApiError(400, "avatar is require");
+  if (!avatarResponse) throw new ApiError(400, "avatar is require again");
 
   const user = await User.create({
     fullname,
