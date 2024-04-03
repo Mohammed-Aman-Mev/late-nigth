@@ -19,7 +19,6 @@ const userRegister = async (req, res) => {
 
   const avatarlocalpath = req.files?.avatar[0]?.path;
   const coverimagelocalpath = req.files?.coverImage[0]?.path;
-
   if (!avatarlocalpath) throw new ApiError(400, "avatar is require");
 
   const avatarResponse = await uploadOnCloudinary(avatarlocalpath);
